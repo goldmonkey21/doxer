@@ -1,0 +1,1 @@
+Just to make sure, being new to Linux it took me a minute to figure out what to do to get some result. What I did is:cp ~/.bitcoin/wallet.dat walletbackup.datIs this file an effective backup of my wallet?

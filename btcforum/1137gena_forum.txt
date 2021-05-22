@@ -1,0 +1,1 @@
+Thank you and sorry for the noise. Recently my client (0.3.10.1, linux 64 bit at that time, currently I use 0.3.11) generated 50.01 (instead of 50.00). Is it ok?P.S. Sorry if this is wrong forum. I thought it fits better that the tech. supp.

@@ -1,0 +1,1 @@
+Good evening,Thank you for your howto, it allows me to prepare a FreeBSD port for Bitcoin.Could you attach makefile.unix.patch.txt your patch? It seems you forgot it.

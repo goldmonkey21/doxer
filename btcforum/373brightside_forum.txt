@@ -1,0 +1,1 @@
+Thank you for the information.  I attempted running bitcoind on my server today (Ubuntu 10.04), worked fine while it was downloading blocks but after a while it the ssh session stopped responding and even network pings went unanswered, so I had to do a manual shutdown and restart to get it under control again. Will try recompiling with the PRIO_MAX setting.

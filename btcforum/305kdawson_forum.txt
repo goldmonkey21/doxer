@@ -1,0 +1,1 @@
+I downloaded Bitcoin to a MacBook Pro and set it to fetching the block chain in preparation for creating coins. On several occasions it seems to have run away with the CPU. After 5 or 6 hours it had downloaded 2% of the block chain -- not exactly quick to get started using it, that will be a drag on viral growth.Have you had any reports of CPU hogging on Intel Macs?

@@ -1,0 +1,1 @@
+I'm trying to get nanotube to use this for his bitcoin-otc wiki. (the pink is in reference to the pink otc order forms) http://gist.github.com/481480python bitcoinchart.py && open khash.pngyou need http://pygooglechart.slowchop.com/

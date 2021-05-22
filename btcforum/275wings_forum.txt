@@ -1,0 +1,1 @@
+Can someone please tell me how to backup the bitcoin wallet?I see the files, directories, address books, but I am not sure where the wallet is?thanks,-W

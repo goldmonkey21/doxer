@@ -1,0 +1,1 @@
+Have you tried closing the <head> tag? I've seen this when connectin a notebook to the network after a day offline. According to the log it's adding addresses via AddAddress(). It takes like 5-10 minutes to stabilize and start downloading blocks. Hi there, new to the project. I find it interesting so here is my support to it IP: 200.69.244.1Edit: Not reliable.

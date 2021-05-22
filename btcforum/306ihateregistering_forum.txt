@@ -1,0 +1,1 @@
+People should give their posts better titles.It should be in the FAQ somewhere that generating bitcoins is a stochastic process, so more or less time might be spent on it. I've been at it for three days and haven't generated any coins yet. (From reading research paper I knew it was stochastic, but I didn't know that it could take *that* long for it to work.)

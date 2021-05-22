@@ -1,0 +1,1 @@
+Kiba, is it that you've accidentally put an extra leading zero in your ask price? What I mean is, did you buy at .1 and then ask .01x, thus selling out to the highest bidder at .097?

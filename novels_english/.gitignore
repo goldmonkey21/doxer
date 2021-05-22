@@ -1,0 +1,14 @@
+# History files
+.Rhistory
+
+# Backup files
+*~
+
+# Stylo files [TBD]
+
+# Example code in package build process
+*-Ex.R
+
+# Mac system files
+.DS_Store
+

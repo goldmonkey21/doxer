@@ -1,0 +1,1 @@
+If you actually care about fiddling with SDR, this will grab SDR values from IMF website and put them in a useable form, XML or yaml. (requires python and pyyaml).http://kphretiq.com/Scripts/Xrate.tar.gz  http://en.wikipedia.org/wiki/Special_Drawing_RightsI guess now all we need is a titanic pool of data to push the IMF to calculate it. How many bitcoins to buy an island? :-)

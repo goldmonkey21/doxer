@@ -1,0 +1,1 @@
+Hi,I get an error right after adding an user.404 apache error :/phpmybitcoin/app/webroot/users/installer was not found on this server.If I go to /app/webroot/index.php I get this following error.Error: The requested address '/app/webroot' was not found on this server.No problem with permissions...What wrong?

@@ -1,0 +1,1 @@
+With the default build (Linux x86_64)Desktop (Xeon x3350 @ 3.2Ghz, 4GB RAM):4 cores - ~ 3300 khash/sLaptop (ASUS w/ Core2 Quad Q9000 @ 2GHz):4 cores - ~ 2000 khash/s

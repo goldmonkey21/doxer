@@ -1,0 +1,1 @@
+Yeah, it's not really a problem. Just a bit odd that's all. Hi I am running bitcoin on 2 machines which run Windows 7.Any time the machines are restarted bitcoin generates a new receiving address. Has anyone else seen this with any other OS?

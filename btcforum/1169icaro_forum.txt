@@ -1,0 +1,1 @@
+Warning :Check your system data and time , you may not be able to generate or receive the most recent blocks !What does it mean ?       I'm just with 2 connections and 500 blocks.

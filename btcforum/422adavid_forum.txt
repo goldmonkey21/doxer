@@ -1,0 +1,1 @@
+I confirm this. bitcoind is actually nice now. Mac OS X 10.6.4NVIDIA GeForce GT 330MI tried the version posted and I was wondering if there would be the possibility to do generation only with the GPU (0 CPU threads and 1 GPU thread).If the code would be checked-in somewhere, I'd be happy to check out and make other tweaks.

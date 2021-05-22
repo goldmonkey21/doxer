@@ -1,0 +1,1 @@
+You can send the coins to an offline wallet because the coins aren't really stored on the computer but in the blockchain. 

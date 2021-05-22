@@ -1,0 +1,1 @@
+I have a couple of GTX480 and some other nvidia cards I could try this with on Gentoo Linux.I've also done a bit of Cuda programming previously, so maybe I could lend a hand.

@@ -1,2 +1,5 @@
-# doxer
-Stylometric Data Mining Library
+# Doxer Stylometric Data Mining Library
+
+## Introduction
+
+
