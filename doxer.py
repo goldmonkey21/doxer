@@ -187,7 +187,6 @@ class Doxer(object):
 				c+=1
 		# Create a final list to sort the best candidates to the top
 		finallist = []
-		#TODO up to herererererere
 		for x,y in finalkey.items():
 			if x == AUTHOR: continue
 			tmp = []
@@ -211,11 +210,6 @@ class Doxer(object):
 		return finallist[0][1]
 			
 	
-#TODO benchmark - limit text size 
-#TODO README complete
-#TODO clean up
-#TODO abstract out delta
-
 """
 Main section
 
