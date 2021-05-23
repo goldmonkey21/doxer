@@ -4,7 +4,7 @@
 ![Agatha Christie quote- very few of us are what we seem](agatha-christie-quote.png)
 
 
-## Introduction!
+## Introduction
 
 ![Simple Stylometry in Terminal](general-doxer-useage.png)
 
