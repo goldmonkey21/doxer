@@ -292,16 +292,3 @@ And on an extra note about the double space pattern associated with Adam Back. M
 
 ![PAN2014 Benchmark Result](pan2014-benchmark.jpg)
 
-
-
-# Donations are most welcome!
-
-Ethereum address:
-0x8b9f6064aeC5Fe8357bD00a93B66460838e42545
-
-Bitcoin address:
-36cUcKsiWwiqT34n9AZE5tsV4C5eLAi37L
-
-
-
-
