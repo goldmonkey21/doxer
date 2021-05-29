@@ -262,6 +262,7 @@ And on an extra note about the double space pattern associated with Adam Back. M
 
 
 ### non-obvious example of Satoshi
+Other Bitcoin developers use this word, but in the reduced list, Gavin only uses it. 
 
 ![non-obvious example of Satoshi and Gavin](non-obvious-satoshi.jpg)
 
@@ -291,4 +292,5 @@ And on an extra note about the double space pattern associated with Adam Back. M
 
 
 ![PAN2014 Benchmark Result](pan2014-benchmark.jpg)
+
 
