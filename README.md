@@ -33,7 +33,7 @@ And to overcome the problem of dispersion mentioned earlier, Doxer runs a quick 
 
 I took it upon myself to create my own feature collecting function by using skip grams so as to quicken up the pace. I devised a crafty little function to put gaps in the ngrams so that regardless of the number of grams I collect, the data is always represented as 4-grams, thus making the algorithm scalable to whatever number of grams I desire. For example, a frequent 4-gram set of characters are [t,h,e,n]. A frequent 2-gram of words may also be [of,the] or even [but,the]. My skip gram would reduce the gram [the,quick,brown,fox,jumped] down to [the,quick,fox,jumped] because I'm applying the skip gram pattern of [1,1,0,1,1] with the zero representing the 'brown' gram being dropped. Here is an example of how Doxer calculates the skip grams:  
 
-
+```python
 	from doxer import Doxer
 
 	d = Doxer()
@@ -60,7 +60,7 @@ I took it upon myself to create my own feature collecting function by using skip
 	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
 	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
 	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
-
+```
 
 ## General Usage
 
