@@ -34,32 +34,32 @@ And to overcome the problem of dispersion mentioned earlier, Doxer runs a quick 
 I took it upon myself to create my own feature collecting function by using skip grams so as to quicken up the pace. I devised a crafty little function to put gaps in the ngrams so that regardless of the number of grams I collect, the data is always represented as 4-grams, thus making the algorithm scalable to whatever number of grams I desire. For example, a frequent 4-gram set of characters are [t,h,e,n]. A frequent 2-gram of words may also be [of,the] or even [but,the]. My skip gram would reduce the gram [the,quick,brown,fox,jumped] down to [the,quick,fox,jumped] because I'm applying the skip gram pattern of [1,1,0,1,1] with the zero representing the 'brown' gram being dropped. Here is an example of how Doxer calculates the skip grams:  
 
 ```python
-	from doxer import Doxer
+from doxer import Doxer
 
-	d = Doxer()
+d = Doxer()
 
-	for y in range(1,20):
-		print(d.split([0 for x in range(y)]))
+for y in range(1,20):
+	print(d.split([0 for x in range(y)]))
 
-	[1]
-	[1, 1]
-	[1, 1, 1]
-	[1, 1, 1, 1]
-	[1, 1, 0, 1, 1]
-	[1, 0, 1, 0, 1, 1]
-	[1, 0, 1, 0, 0, 1, 1]
-	[1, 0, 1, 0, 0, 1, 0, 1]
-	[1, 0, 0, 1, 0, 0, 0, 1, 1]
-	[1, 0, 0, 1, 0, 0, 0, 1, 0, 1]
-	[1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1]
-	[1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1]
-	[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1]
-	[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1]
-	[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
-	[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
-	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
-	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
-	[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
+[1]
+[1, 1]
+[1, 1, 1]
+[1, 1, 1, 1]
+[1, 1, 0, 1, 1]
+[1, 0, 1, 0, 1, 1]
+[1, 0, 1, 0, 0, 1, 1]
+[1, 0, 1, 0, 0, 1, 0, 1]
+[1, 0, 0, 1, 0, 0, 0, 1, 1]
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 1]
+[1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1]
+[1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1]
+[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1]
+[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
+[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
+[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
 ```
 
 ## General Usage
@@ -117,6 +117,10 @@ And by way of a surprise finding, I discovered that the Gutenberg corpus was awf
 I created 13 Forest models on an Amazon EC2 with character grams of 100 through to 1000 with gaps of 100 (10 models), and word grams of [100,200,300] (3 models). There were two words in the word grams that needed to be removed due to an error and so the 300 condition was really 298 (there was an empty string and a parsing error of 'ofthe' in the single word grams). I created 3 separate models for each condition being Kin, Gut, and a Combination of Gut/Kin. 
 
 My findings during the reduce() stage was that two authors being Gavin Andresen (ID = 224) and Lachesis (ID = 237) were classified as Satoshi 9 times out of 13 for the Kin Random Forest models (3 word models and 10 4-gram character models). I then removed all texts under 4 classifications to complete the reduction process and to let Doxer analyze the texts with its unique word overlap algorithm. I analyzed character grams 4 through 10 (7 class) and word grams 1 through to 10 (10 class) on the Doxer algorithm, thus giving me 17 extra classifications. The results were quite definite as illustrated in the graph below with all but one classification going to Gavin. All character grams were given to Gavin and only the 10th word gram was given to Lachesis. Therefore, out of the top classified Random Forest candidates, Gavin Andresen had the most unique grams (character and word) with that of Satoshi Nakamoto! 
+
+### Update 7/June/21
+
+I recently added Hal's posts and found that the Forest also added him to the reduced list. My top favorites of Satoshi now include Gavin, Hal, Lachesis (i.e. Eric Swanson). However, when I compare only Gavin, Hal, and Lachesis, Gavin wins. 
 
 I further ran the reduced datasets over the rstylo library in R to see if I would get a similar result. Using 1,000 most frequent word models and also using both Forest texts above 4 classifications and all texts classified as Satoshi, I found that Gavin and Satoshi clustered together. It is interesting that even in the rstylo() cluster Lachesis was second best to Gavin, thus showing what a tight race it was indeed. 
 
@@ -198,6 +202,24 @@ Can you spot the similarity here? There is a certain style of writing that goes 
 
 So next time you see one of those most common word clusters like proof-of-work, just remember that there is a greater regex pattern going on here that has Satoshi's fingerprints all over them. But don't take my word for it. Please be my guest and look through the texts yourself. I have so graciously compiled a very nice collection of texts in the folder above (as no research on this matter has done yet). I actually encourage you to do your own analysis. Extend the field of stylometry by all means. I would simply love it in fact if I could simply clone someone else's Github page and conduct cutting edge stylometry from the comfort of my own Linux terminal!
 
+### Update 7/June/21
+
+Gavin also performs well on patterns of multiple words in a row. He not only uses the term back-of-the-envelope, but also uniquely adds the words "rough" or "my" at the front in the same way that Satoshi does. There are hundreds of patterns like these that distinguish Gavin from other Satoshi-candidates. 
+
+You can check out the use of this phrase in the wild on the BitcoinTalk forum:
+
+Satoshi's use of the phrase:
+https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=460
+
+Gavin's use of the phrase:
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=200
+
+And here are some screenshots of the phrase:
+
+![Gavin's use of term "rough" and "my" back-of-the-envelope](gavin-satoshi-doxer.png)
+
+![Gavin's use of "rough" and "my" back-of-the-envelope in wild next to Satoshi](gavin-satoshi-doxer2.png)
+
 ## Consensus
 
 And by way of my own rather rough form of back-of-the-envelope analysis, I couldn't help but peer inside the mysteries of the Bible texts and see if I could solve a mystery or two. I particularly wanted to find out the author of the q-source gospel, the supposed original gospel of the new testament. In addition to this I wanted to test out the Septuagint priority theory that most of the old testament was written around or after the Septuagint translation. I reasoned to myself in a rather crude way that the priority would be supported if I found an earlier text of the Bible, let's say Genesis, loaded with a latter book such as Daniel or Tobit. What I found was quite impressive because it seems that even the simplest of models could handle this case. The book of Genesis has in fact a similar writing style to Kings I through to IV, but better yet, a salient similarity to that of Daniel! The R library rstylo in fact clusters Daniel and Genesis together even with all of the other LXX (Septuagint) books present. And if you read the books of Genesis and Daniel together you may notice that they have similar words and stories--both delve deeply into the world of dream interpretation, probably even a precursor or inspiration for the late Sigmund Freud. But have you ever noticed how similar Daniel is to Joseph (a character in Genesis). They both interpreted terrifying dreams of the king and were given a nice gold necklace to adorn their necks. I also noticed that with the Septuagint version, and surviving in texts such as the King James Bible, that both Daniel and Genesis used the word firmament, a possible indication as to the cosmology of the writer. 
@@ -212,20 +234,20 @@ Moving right along to the q-source gospel, I must say that I was deeply disappoi
 Here are some interesting books that you can read on the matter while maybe also by chance running Doxer on the side:
 
 
-Beyond Belief: The Secret Gospel of Thomas 
+The Gospel of Thomas and Plato
 
-By Elaine Pagels
+By Ivan Miroshnikov
+
+https://brill.com/view/title/38096?language=en
 
 
-https://www.goodreads.com/book/show/386559.Beyond_Belief
 
-
-Berossus and Genesis, Manetho and Exodus: Hellenistic Histories and the Date of the Pentateuch
+Plato and the Creation of the Hebrew Bible
 
 By Russell E. Gmirkin
 
+https://www.routledge.com/Plato-and-the-Creation-of-the-Hebrew-Bible/Gmirkin/p/book/9780367878368
 
-https://www.goodreads.com/book/show/2483351.Berossus_and_Genesis_Manetho_and_Exodus
 
 
 ## Systematic Bias
@@ -292,5 +314,191 @@ Other Bitcoin developers use this word, but in the reduced list, Gavin only uses
 
 
 ![PAN2014 Benchmark Result](pan2014-benchmark.jpg)
+
+
+# Working out
+
+## Doxer Results after using word gram Forest reduction:
+1. Note that *all* results declare Gavin the winner.
+2. Also note that on the word gram forests, both Gavin and Hal are classified 2/3 times.
+3. The reduced list is from a folder of 600 profiles and reduces them down to a small number. 
+
+```python
+Running over all Forest models
+--------------------------------------
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+59 1.0 ['1783Artefact2_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+179 1.0 ['1171btchris_forum', '3satoshi_forum']
+219 1.0 ['517BeeCee1_forum', '3satoshi_forum']
+16 1.0 ['526Olipro_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+276 1.0 ['597omegadraconis_forum', '3satoshi_forum']
+301 1.0 ['511Bitquux_forum', '3satoshi_forum']
+369 1.0 ['469eugene2k_forum', '3satoshi_forum']
+372 1.0 ['1168puddinpop_forum', '3satoshi_forum']
+434 1.0 ['3satoshi_forum', '357EricJ2190_forum']
+498 1.0 ['3satoshi_forum', '466lfm_forum']
+508 1.0 ['3satoshi_forum', '479PulsedMedia_forum']
+578 1.0 ['3satoshi_forum', '1567doublec_forum']
+609 1.0 ['3satoshi_forum', '576Syke_forum']
+
+Reduced list of forest candidates:
+--------------------------------------
+[[17, '3satoshi_forum'], [2, '2436Hal_forum'], [2, '224GavinAndresen_forum'], [1, '597omegadraconis_forum'], [1, '576Syke_forum'], [1, '526Olipro_forum'], [1, '517BeeCee1_forum'], [1, '511Bitquux_forum'], [1, '479PulsedMedia_forum'], [1, '469eugene2k_forum']]
+
+Analyzing Word Grams 1 - 10
+--------------------------------------
+1 224GavinAndresen
+2 224GavinAndresen
+3 224GavinAndresen
+4 224GavinAndresen
+5 224GavinAndresen
+6 597omegadraconis
+7 224GavinAndresen
+8 224GavinAndresen
+9 224GavinAndresen
+
+Analyzing Char Grams 4 - 10
+--------------------------------------
+4 224GavinAndresen
+5 224GavinAndresen
+6 224GavinAndresen
+7 224GavinAndresen
+8 224GavinAndresen
+9 224GavinAndresen
+```
+
+## Doxer results on character n-gram built forest reduction
+1. There are more classifications because there are 10 different forest models. 
+2. Gavin wins again overall, yet faces competition from Hal. 
+3. It is of interest that Hal has such a similar writing style as that of Satoshi. 
+4. Also worth noticing is that Lachesis wasn't found in the word gram models previous, but is found in the character gram models. 
+
+```python
+Running over all Forest models
+--------------------------------------
+14 1.0 ['413bg002h_forum', '3satoshi_forum']
+33 1.0 ['392ribuck_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+214 1.0 ['541jgarzik_forum', '3satoshi_forum']
+242 1.0 ['1565barbarousrelic_forum', '3satoshi_forum']
+281 1.0 ['525Red_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+450 1.0 ['3satoshi_forum', '535em3rgentOrdr_forum']
+490 1.0 ['3satoshi_forum', '1496Bimmerhead_forum']
+501 1.0 ['3satoshi_forum', '491kiba_forum']
+572 1.0 ['3satoshi_forum', '14The Madhatter_forum']
+599 1.0 ['3satoshi_forum', '704caveden_forum']
+33 1.0 ['392ribuck_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+242 1.0 ['1565barbarousrelic_forum', '3satoshi_forum']
+281 1.0 ['525Red_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+572 1.0 ['3satoshi_forum', '14The Madhatter_forum']
+33 1.0 ['392ribuck_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+281 1.0 ['525Red_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+599 1.0 ['3satoshi_forum', '704caveden_forum']
+14 1.0 ['413bg002h_forum', '3satoshi_forum']
+33 1.0 ['392ribuck_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+214 1.0 ['541jgarzik_forum', '3satoshi_forum']
+242 1.0 ['1565barbarousrelic_forum', '3satoshi_forum']
+364 1.0 ['198allinvain_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+498 1.0 ['3satoshi_forum', '466lfm_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+219 1.0 ['517BeeCee1_forum', '3satoshi_forum']
+242 1.0 ['1565barbarousrelic_forum', '3satoshi_forum']
+599 1.0 ['3satoshi_forum', '704caveden_forum']
+33 1.0 ['392ribuck_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+242 1.0 ['1565barbarousrelic_forum', '3satoshi_forum']
+364 1.0 ['198allinvain_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+599 1.0 ['3satoshi_forum', '704caveden_forum']
+33 1.0 ['392ribuck_forum', '3satoshi_forum']
+41 1.0 ['4sirius_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+87 1.0 ['1929davout_forum', '3satoshi_forum']
+242 1.0 ['1565barbarousrelic_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+476 1.0 ['3satoshi_forum', '336Insti_forum']
+14 1.0 ['413bg002h_forum', '3satoshi_forum']
+55 1.0 ['270llama_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+56 1.0 ['2436Hal_forum', '3satoshi_forum']
+144 1.0 ['224GavinAndresen_forum', '3satoshi_forum']
+393 1.0 ['237lachesis_forum', '3satoshi_forum']
+
+Reduced list of forest candidates:
+--------------------------------------
+
+[[68, '3satoshi_forum'], [9, '2436Hal_forum'], [9, '237lachesis_forum'], [7, '224GavinAndresen_forum'], [7, '1929davout_forum'], [6, '392ribuck_forum'], [6, '1565barbarousrelic_forum'], [4, '704caveden_forum'], [3, '525Red_forum'], [3, '413bg002h_forum']]
+
+Analyzing Word Grams 1 - 10
+--------------------------------------
+1 224GavinAndresen
+2 224GavinAndresen
+3 224GavinAndresen
+4 237lachesis
+5 2436Hal
+6 2436Hal
+7 2436Hal
+8 2436Hal
+9 2436Hal
+
+Analyzing Char Grams 4 - 10
+--------------------------------------
+4 224GavinAndresen
+5 224GavinAndresen
+6 224GavinAndresen
+7 224GavinAndresen
+8 224GavinAndresen
+9 224GavinAndresen
+```
+
+## Doxer results just comparing Satoshi, Gavin, Hal, and Lachesis
+1. This may seem repetitive, but it is worth noting that when the top contenders are compared with no other texts, that Gavin is more similar to Satoshi. 
+
+```python
+Analyzing Word Grams 1 - 10
+--------------------------------------
+1 224GavinAndresen
+2 224GavinAndresen
+3 224GavinAndresen
+4 224GavinAndresen
+5 224GavinAndresen
+6 224GavinAndresen
+7 224GavinAndresen
+8 224GavinAndresen
+9 224GavinAndresen
+
+Analyzing Char Grams 4 - 10
+--------------------------------------
+4 224GavinAndresen
+5 224GavinAndresen
+6 224GavinAndresen
+7 224GavinAndresen
+8 224GavinAndresen
+9 224GavinAndresen
+```
 
 

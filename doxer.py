@@ -16,10 +16,19 @@ By Troy J. Watson
 Example:
 
 Basic 1-gram word search for Satoshi 
-doxer.py -t Satoshi
+doxer.py -t 3satoshi
 
 Find the author for Satoshi with 4 ngrams using characters
-doxer.py -n 4 -c -t Satoshi 
+doxer.py -n 4 -c -t 3satoshi
+
+Reduce massive dataset with forest then classify: 
+doxer.py -t 3satoshi -f 
+
+Do the same again only with character n-grams with forest:
+doxer.py -t 3satoshi -f -c
+
+Reset pickle of table and run a fresh forest:
+doxer-py -t 3satoshi -f --reset
 
 """
 import argparse
@@ -28,6 +37,11 @@ import sys
 import glob
 import math
 import random
+import pickle
+
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
 
 class Doxer(object):
 	def __init__(self):
@@ -285,6 +299,249 @@ def main(args):
 	if args.unitTest:
 		print('Skip Grams... {}'.format(doxer.testSkipGram()))
 		print('Word Grams... {}'.format(doxer.testWordGram()))
+	
+	elif args.forest:
+		##########################################
+		# STEP 1 : COLLECT FREQUENCIES 
+		##########################################
+		
+		def ngrams(l, n = 4):
+			c = 0
+			out = []
+			while True:
+				out += [l[c:c+n]]
+				c += 1
+				if c >= len(l) - n + 1:
+					break
+			return out
+
+		def ngramDict(l):
+			d = {}
+			for x in l:
+				xx = ''.join(x)
+				if xx in d:
+					d[xx] += 1
+				else:
+					d[xx] = 1
+			return d
+
+		def processText(txt,NGRAM=4,word=False):
+			t = open(txt).read().lower()
+			#NOTE use these if using words
+			if word: 
+				r = t.split(' ')
+				t = []
+				for rr in r:
+					t += [''.join(list([val for val in rr if val.isalpha()]))]
+			else:
+				#NOTE use this if using ngrams
+				t = ''.join(list([val for val in t if val.isalpha()]))
+			return ngramDict(ngrams(t,NGRAM))
+
+		if args.charGram:
+			WORD = False
+		else:
+			WORD = True
+
+
+		if args.gut:
+			KIN = False
+		else:
+			KIN = True
+
+		if WORD:
+			NGRAM = 1
+		else:
+			NGRAM = 4
+
+		if WORD: w = 'w'
+		else: w = 'c'
+
+		buff_title = 'table-' + str(w) + '.pickle'
+
+		buff = True	
+		try: 
+			zscore = pickle.load(open(buff_title,'rb'))
+		except:
+			buff = False	
+
+		if args.reset:
+			buff = False
+			
+		if WORD:
+			ff = open('/home/flak/Documents/prog/.git/doxer/1w-300a/masterkey.pickle','rb')
+		else:
+			ff = open('/home/flak/Documents/prog/.git/doxer/4g-1000a/masterkey.pickle','rb')
+		ll = pickle.load(ff)
+
+
+		if not(buff):
+			tags = [l[1] for l in ll]
+
+			d = {}
+			for l in ll:
+				d[l[1]] = 0
+
+			fs = glob.glob('*.txt')
+
+			d_sum = d.copy()
+			n_sum = 0
+
+			zscore = {}
+
+			for f in fs:
+				print(f.split('/')[-1])
+				dd = d.copy()
+
+				ngs = processText(f,NGRAM,WORD)
+				n = 0
+				for t in tags:
+					if t in ngs:
+						n += ngs[t]
+					else:
+						ngs[t] = 0
+
+				for t in tags:
+					try:
+						dd[t] = ngs[t] / n 
+						d_sum[t] += ngs[t] / n
+					except:
+						print('error divide by zero')
+						
+				out = [dd[t] for t in tags]
+				
+				title = f.split('/')[-1].split('.')[0]
+				zscore[title] = out	
+
+				n_sum += 1
+			with open(buff_title,'wb') as f:
+				pickle.dump(zscore, f)	
+
+
+		##########################################
+		# STEP 2 : CREATE PAIRWISE COMPARISONS 
+		##########################################
+		KEYWORD = args.testText
+		#NOTE create X for forest
+		X = []
+		yy = []
+
+		ll = []
+		for x,y in zscore.items():
+			ll += [x]
+		l = []
+		d = {}
+		cx = 0
+		cy = 0
+		true_c = 0
+		for x in ll:
+			cy = 0
+			for y in ll:
+				if x==y:
+					pass
+				elif x.split('_')[0] != KEYWORD and y.split('_')[0] != KEYWORD:
+					pass
+				else:
+					l = sorted([cx,cy])
+					if l[0] in d:
+						if l[1] in d[l[0]]:
+							cy += 1
+							continue
+						else:
+							d[l[0]] += [l[1]]
+					else:
+						d[l[0]] = [l[1]]
+					txt1 = zscore[ll[l[0]]]
+					txt2 = zscore[ll[l[1]]]
+					txts = list(zip(txt1,txt2))
+					delta = [abs(x[0] - x[1]) for x in txts]
+					yy += [[x,y]]
+					X += [delta]
+					true_c += 1
+				cy += 1
+			cx += 1
+		print(X[0])
+		print(yy[0])
+
+		##########################################
+		# STEP 3 : RUN DATA ON FOREST MODEL 
+		##########################################
+
+		if KIN:
+			knn = 'kin'
+		else:
+			knn = 'gut'
+
+		if WORD: 
+			nns = [100,200,300]
+			gms = '1w'
+		else:
+			nns = [100,200,300,400,500,600,700,800,900,1000]
+			gms = '4g'
+
+		def trans(l): return list(map(list, zip(*l)))
+		# Collect all reduced candidates here
+		r = []
+		print('Running over all Forest models')
+		print('--------------------------------------')
+		for code in nns:	
+			ss = gms + '-rs-' + knn + '-' + str(code) + 'a.pickle'
+			fn = '/home/flak/Documents/prog/.git/forest/'+ss	
+			if WORD and code == 300:
+				codes = 298
+			else:
+				codes = code
+			tmpX = trans(trans(X)[:codes])
+
+			loaded_model = pickle.load(open(fn,'rb'))
+			predictions = loaded_model.predict(tmpX)
+			keys = yy
+			c = 0
+			for p in predictions:
+				if int(p) > 0:
+					print(c,p,keys[c])
+					for k in keys[c]:
+						r += [k]
+				c+=1
+
+		##########################################
+		# STEP 4 : RUN DOXER ON REDUCED LIST 
+		##########################################
+
+		# Get list of files in folder to test against Q
+
+		ddd = {}
+		for rr in r:
+			if rr in ddd:
+				ddd[rr] += 1
+			else:
+				ddd[rr] = 1
+		r = sorted([[ddd[x],x]for x in set(r)], reverse=True)[:10]
+		print(r)
+		data = [x[1] + '.txt' for x in r]
+		print()
+		print('Reduced list of forest candidates:')	
+		print('--------------------------------------')
+		# Q document is the document in question
+		q = glob.glob(args.testText + '*.txt')
+
+		if args.forestOnly:
+			sys.exit()
+
+		print()
+		print('Analyzing Word Grams 1 - 10')
+		print('--------------------------------------')
+		for y in range(1,10):
+			fk = doxer.analyse(fs=data,CHAR=False,NGRAM=y,AUTHOR=args.testText, OUTPUT=args.output)
+			print(y,fk)
+
+		print()
+		print('Analyzing Char Grams 4 - 10')
+		print('--------------------------------------')
+		for y in range(4,10):
+			fk = doxer.analyse(fs=data,CHAR=True,NGRAM=y,AUTHOR=args.testText, OUTPUT=args.output)
+			print(y,fk)
+
 
 	elif args.pan:
 
@@ -378,6 +635,10 @@ if __name__ == '__main__':
 	#TODO add v for verbose
 	parser.add_argument('-p',help='Pan 2014 Benchmark over folder',dest='pan',action='store_true')
 	parser.add_argument('-o',help='Output exclusive ngrams used by author and classified candidate',dest='output',action='store_true')
+	parser.add_argument('-g',help='Use Gutenberg models for forest',dest='gut',action='store_true')
+	parser.add_argument('-f',help='Run forest model',dest='forest',action='store_true')
+	parser.add_argument('-ff',help='Only run forest model and quit before running doxer',dest='forestOnly',action='store_true')
+	parser.add_argument('--reset',help='Reset pickle of tables',dest='reset',action='store_true')
 
 	args = parser.parse_args()
 
