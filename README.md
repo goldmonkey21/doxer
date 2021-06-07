@@ -218,7 +218,7 @@ So next time you see one of those most common word clusters like proof-of-work, 
 	224GavinAndresen_forum.txt
 	3satoshi_forum.txt
 	
-**That's right, out of 620 profiles from the BitcoinTalk Forum, only two people used these word combinations. That's 63.4 MB of text where only two profiles pop out as using this phrase. It just so happens that Stylometric analysis also isolates these two profiles as of haivng the same writing style. That's Stylometric analysis on function word use (i.e. frequency patterns of words like "the","but","then") and also unique word useage (i.e. Doxer). **
+**That's right, out of 620 profiles from the BitcoinTalk Forum, only two people used these word combinations. That's 63.4 MB of text where only two profiles pop out as using this phrase. It just so happens that Stylometric analysis also isolates these two profiles as of haivng the same writing style. That's Stylometric analysis on function word use (i.e. frequency patterns of words like "the","but","then") and also unique word useage (i.e. Doxer).**
 
 You can check out the use of this phrase in the wild on the BitcoinTalk forum:
 
