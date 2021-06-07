@@ -119,8 +119,7 @@ I created 13 Forest models on an Amazon EC2 with character grams of 100 through 
 My findings during the reduce() stage was that two authors being Gavin Andresen (ID = 224) and Lachesis (ID = 237) were classified as Satoshi 9 times out of 13 for the Kin Random Forest models (3 word models and 10 4-gram character models). I then removed all texts under 4 classifications to complete the reduction process and to let Doxer analyze the texts with its unique word overlap algorithm. I analyzed character grams 4 through 10 (7 class) and word grams 1 through to 10 (10 class) on the Doxer algorithm, thus giving me 17 extra classifications. The results were quite definite as illustrated in the graph below with all but one classification going to Gavin. All character grams were given to Gavin and only the 10th word gram was given to Lachesis. Therefore, out of the top classified Random Forest candidates, Gavin Andresen had the most unique grams (character and word) with that of Satoshi Nakamoto! 
 
 ### Update 7/June/21
-
-I recently added Hal's posts and found that the Forest also added him to the reduced list. My top favorites of Satoshi now include Gavin, Hal, Lachesis (i.e. Eric Swanson). However, when I compare only Gavin, Hal, and Lachesis, Gavin wins. 
+**I recently added Hal's posts and found that the Forest also added him to the reduced list. My top favorites of Satoshi now include Gavin, Hal, Lachesis (i.e. Eric Swanson). However, when I compare only Gavin, Hal, and Lachesis, Gavin wins.**
 
 I further ran the reduced datasets over the rstylo library in R to see if I would get a similar result. Using 1,000 most frequent word models and also using both Forest texts above 4 classifications and all texts classified as Satoshi, I found that Gavin and Satoshi clustered together. It is interesting that even in the rstylo() cluster Lachesis was second best to Gavin, thus showing what a tight race it was indeed. 
 
@@ -204,7 +203,7 @@ So next time you see one of those most common word clusters like proof-of-work, 
 
 ### Update 7/June/21
 
-Gavin also performs well on patterns of multiple words in a row. He not only uses the term back-of-the-envelope, but also uniquely adds the words "rough" or "my" at the front in the same way that Satoshi does. There are hundreds of patterns like these that distinguish Gavin from other Satoshi-candidates. 
+**Gavin also performs well on patterns of multiple words in a row. He not only uses the term back-of-the-envelope, but also uniquely adds the words "rough" or "my" at the front in the same way that Satoshi does. There are hundreds of patterns like these that distinguish Gavin from other Satoshi-candidates.**
 
 You can check out the use of this phrase in the wild on the BitcoinTalk forum:
 
@@ -319,7 +318,7 @@ Other Bitcoin developers use this word, but in the reduced list, Gavin only uses
 # Working out
 
 ## Doxer Results after using word gram Forest reduction:
-1. Note that *all* results declare Gavin the winner.
+1. Note that nearly *all* of the results declare Gavin the winner.
 2. Also note that on the word gram forests, both Gavin and Hal are classified 2/3 times.
 3. The reduced list is from a folder of 600 profiles and reduces them down to a small number. 
 
