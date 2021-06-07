@@ -209,7 +209,7 @@ So next time you see one of those most common word clusters like proof-of-work, 
 
 	grep -l "My back-of-the-envelope" * 
 	
-**And then try: **
+**And then try:**
 
 	grep -l "rough back-of-the-envelope" * 
 	
