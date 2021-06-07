@@ -205,6 +205,21 @@ So next time you see one of those most common word clusters like proof-of-work, 
 
 **Gavin also performs well on patterns of multiple words in a row. He not only uses the term back-of-the-envelope, but also uniquely adds the words "rough" or "my" at the front in the same way that Satoshi does. There are hundreds of patterns like these that distinguish Gavin from other Satoshi-candidates.**
 
+**Try it for yourself... download the Bitcoin forum folder above and type the following in terminal:**
+
+	grep -l "My back-of-the-envelope" * 
+	
+**And then try: **
+
+	grep -l "rough back-of-the-envelope" * 
+	
+**Can you see the results? I'll print them out for you in case you haven't. Both commands in bash return the same result:**
+
+	224GavinAndresen_forum.txt
+	3satoshi_forum.txt
+	
+**That's right, out of 620 profiles from the BitcoinTalk Forum, only two people used these word combinations. That's 63.4 MB of text where only two profiles pop out as using this phrase. It just so happens that Stylometric analysis also isolates these two profiles as of haivng the same writing style. That's Stylometric analysis on function word use (i.e. frequency patterns of words like "the","but","then") and also unique word useage (i.e. Doxer). **
+
 You can check out the use of this phrase in the wild on the BitcoinTalk forum:
 
 Satoshi's use of the phrase:
