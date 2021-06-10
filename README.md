@@ -519,7 +519,11 @@ Analyzing Char Grams 4 - 10
 I used the library `faststylometry` to see who is the closest neighbor of Satoshi out of the 600+ profiles in the above folder. 
 
 1) install `faststylometry`:
-	pip install faststylometry
+
+https://github.com/fastdatascience/faststylometry
+
+```pip install faststylometry```
+
 2) rename files to adhere to faststylometry program: 
 
 ```
@@ -599,6 +603,11 @@ y = [[x[1][0],x[0]] for x in zip(a.index.values.tolist(),a.values.tolist()) if x
 ]
 ```
 And so on, I cut the list off here because you get the idea. 
+
+## Scree Plot Analysis of Basic Nearest Neighbor 
+
+
+![Scree Plot of Gavin and Satoshi](scree-plot-gavin-satoshi.png)
 
 
 
