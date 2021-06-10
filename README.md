@@ -607,7 +607,7 @@ And so on, I cut the list off here because you get the idea.
 ## Scree Plot Analysis of Basic Nearest Neighbor 
 
 
-![Scree Plot of Gavin and Satoshi](scree-plot-gavin-satoshi.png)
+![Scree Plot of Gavin and Satoshi](scree-plot-gavin-satoshi-2.png)
 
 
 
