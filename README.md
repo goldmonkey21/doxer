@@ -514,5 +514,91 @@ Analyzing Char Grams 4 - 10
 8 224GavinAndresen
 9 224GavinAndresen
 ```
+# For those still not convinced
+
+I used the library `faststylometry` to see who is the closest neighbor of Satoshi out of the 600+ profiles in the above folder. 
+
+1) install `faststylometry`:
+	pip install faststylometry
+2) rename files to adhere to faststylometry program: 
+
+```
+101601adam3us_-_forum.txt
+101Goldstein_-_forum.txt
+1034gumtree_-_forum.txt
+1036maxinedougherty_-_forum.txt
+1045torservers_-_forum.txt
+1047Loki_-_forum.txt
+1048pavelo_-_forum.txt
+1050Guybrush_-_forum.txt
+1052snrlx_-_forum.txt
+1059wirher_-_forum.txt
+```
+3) run the code to find out closest neighbor to Satoshi using Burrows' Delta: 
+```python
+from faststylometry import Corpus
+from faststylometry import load_corpus_from_folder
+from faststylometry import tokenise_remove_pronouns_en
+from faststylometry import calculate_burrows_delta
+from faststylometry import predict_proba, calibrate
+import nltk ; nltk.download("punkt")
+train_corpus = load_corpus_from_folder("/home/flak/Documents/prog/.git/tests/train/")
+train_corpus.tokenise(tokenise_remove_pronouns_en)
+test_corpus = load_corpus_from_folder("/home/flak/Documents/prog/.git/tests/test/", pattern=None)
+test_corpus.tokenise(tokenise_remove_pronouns_en)
+a = calculate_burrows_delta(train_corpus, test_corpus, vocab_size = 300)
+from operator import itemgetter ; first_item = itemgetter(0)
+y = [[x[1][0],x[0]] for x in zip(a.index.values.tolist(),a.values.tolist()) if x[1][0] > 0] ; print(sorted(y, key=first_item))
+```
+
+4) here are the results with Gavin at the top: 
+
+```
+[[0.16304531949753703, '224GavinAndresen'],
+[0.16819089987038993, '2436Hal'],
+[0.17117725119873753, '237lachesis'],
+[0.18689911496747535, '1171btchris'],
+[0.18902020407080056, '392ribuck'],
+[0.1905760032509449, '601nelisky'],
+[0.191341605504933, '143laszlo'],
+[0.19470326629850976, '277jago2598'],
+[0.19787557885928606, '1931genjix'],
+[0.19803556342323256, '466lfm'],
+[0.20013588602407642, '49Cdecker'],
+[0.20504875859359808, '541jgarzik'],
+[0.2053947464440863, '413bg002h'],
+[0.20603693932506034, '381FreeMoney'],
+[0.207102693502892, '14The Madhatter'],
+[0.20827964686736655, '490ByteCoin'],
+[0.20833283606966607, '525Red'],
+[0.2090643885444086, '1567doublec'],
+[0.20995692671711028, '1998bober182'],
+[0.21291032880876237, '1496Bimmerhead'],
+[0.21363070576744642, '704caveden'],
+[0.21394524686598132, '4sirius'],
+[0.2150249002955321, '1882da2ce7'],
+[0.21561899268622292, '1268nanotube'],
+[0.21562366403733194, '1652harding'],
+[0.21567581212773088, '26NewLibertyStandard'],
+[0.21577919912647062, '336Insti'],
+[0.21602612863249646, '345knightmb'],
+[0.21622382313104055, '325jimbobway'],
+[0.2163952408346549, '1864Drifter'],
+[0.21656403021510498, '39fergalish'],
+[0.21794367848910742, '430aceat64'],
+[0.2192537090855312, '545melvster'],
+[0.22094621987398672, '163Karmicads'],
+[0.2213116420747501, '310martin'],
+[0.22217650240609293, '517BeeCee1'],
+[0.22286648170864387, '13SmokeTooMuch'],
+[0.22293531802625202, '694BrightAnarchist'],
+[0.2231266182870886, '643MoonShadow'],
+[0.22331756645680917, '491kiba'],
+[0.2233369431480121, '1775ShadowOfHarbringer'],
+...
+]
+```
+And so on, I cut the list off here because you get the idea. 
+
 
 
