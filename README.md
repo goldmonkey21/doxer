@@ -619,113 +619,113 @@ I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesi
 **This is a very unique phrase that should make people check twice**
 
 ### Satoshi wrote the following:
-```It is possible, but it's a lot of work, and there are a lot of other higher priority things to work on.```
+```It is possible, but it's a lot of work, and there are a lot of other``` **higher priority things** ```to work on.```
 
 ### Gavin wrote the following:
-```I still plan on writing up why I disagree with the idea that a larger block size will lead to centralization, but I'm working on some higher priority things first.```
+```I still plan on writing up why I disagree with the idea that a larger block size will lead to centralization, but I'm working on some``` **higher priority things** ```first.```
 
-```We've got a VERY VERY long way to go before bitcoins are as popular as dollars, and there are much higher priority things to work on right now than adding more divisibility for a problem that is pretty likely to never actually be a problem.```
+```We've got a VERY VERY long way to go before bitcoins are as popular as dollars, and there are much``` **higher priority things** ```to work on right now than adding more divisibility for a problem that is pretty likely to never actually be a problem.```
 
-```I'm tempted to code that up and run some tests on a testnet-in-a-box, but there are much higher priority things on my TODO list;```
+```I'm tempted to code that up and run some tests on a testnet-in-a-box, but there are much``` **higher priority things** ```on my TODO list;```
 
-```So I'd really like to see network and client support for having both people pre-sign and hold on to a transaction with a far-in-the-future lockTime (maybe as a fee-only transaction). Nope, sorry, have higher priority things to do.```
+```So I'd really like to see network and client support for having both people pre-sign and hold on to a transaction with a far-in-the-future lockTime (maybe as a fee-only transaction). Nope, sorry, have``` **higher priority things** ```to do.```
 
-```It is not on my short-term TODO list because there are too many other higher priority things on my TODO list, but a nice clean well-tested upward-compatible patch would be most welcome.```
+```It is not on my short-term TODO list because there are too many other``` **higher priority things** ```on my TODO list, but a nice clean well-tested upward-compatible patch would be most welcome.```
 
-```Something like this is possible (I've been thinking about doing it, although I have higher priority things on my TODO list)```
+```Something like this is possible (I've been thinking about doing it, although I have``` **higher priority things** ```on my TODO list)```
 
-```I think that is a good idea (I think people would find all sorts of interesting uses for it), but there are higher priority things on the development roadmap.```
+```I think that is a good idea (I think people would find all sorts of interesting uses for it), but there are``` **higher priority things** ```on the development roadmap.```
 
 ## A menace to the network
 
 ### Satoshi wrote:
-```So much of the design depends on all nodes getting exactly identical results in lockstep that a second implementation would be a menace to the network.```
+```So much of the design depends on all nodes getting exactly identical results in lockstep that a second implementation would be``` **a menace to the network.**
 
 ### Gavin wrote:
-```They'll either hack the existing code or write their own version, and will be a menace to the network.```
+```They'll either hack the existing code or write their own version, and will be``` **a menace to the network.**
 
 ## Don't have time to 
 **This is actually a part of a famous Satoshi saying that most people would remember**
 
 ### Satoshi wrote:
-```If you don't believe me or don't get it, I don't have time to try to convince you, sorry.```
+```If you don't believe me or don't get it, I``` **don't have time to** ```try to convince you, sorry.```
 
 **(This was written to Larimer who is under the name bytemaster [ID = 611], also available in the folder above).**
 
 ### Gavin wrote:
-```I am also sorry I didn't speak up about some of the things that were said about you earlier in this thread (e.g. suggesting an attack on your pool is NOT cool) but I don't have time to read every forum post as soon as it is posted...```
+```I am also sorry I didn't speak up about some of the things that were said about you earlier in this thread (e.g. suggesting an attack on your pool is NOT cool) but I``` **don't have time to** ```read every forum post as soon as it is posted...```
 
 ## Probably be something like
 **This one is kind of ironic because I'm detecting Satoshi using probability coefficients (term frequencies have been termed probabilities in the past).**
 
 ### Satoshi wrote:
-```If you still have communication with the rest of your area, it would probably be something like 1/1000 of the world or less.```
+```If you still have communication with the rest of your area, it would``` **probably be something like** ```1/1000 of the world or less.```
 
 ### Gavin wrote:
-```The agenda will probably be decided ten minutes before the meeting, and will probably be something like "Peter talks for ten minutes and answers questions for 20 minutes while everybody is eating.```
+```The agenda will probably be decided ten minutes before the meeting, and will``` **probably be something like** ```"Peter talks for ten minutes and answers questions for 20 minutes while everybody is eating.```
 
 ## If I recall correctly
 
 ### Satoshi wrote:
-```If I recall correctly, 500 is the prescribed status code for JSON-RPC error responses.```
+**If I recall correctly,** ```500 is the prescribed status code for JSON-RPC error responses.```
 
 ### Gavin wrote:
-```If I recall correctly, 300GB per month was the limit for my ISP in Australia, too.```
+**If I recall correctly,** ```300GB per month was the limit for my ISP in Australia, too.```
 
-```If I recall correctly, if they DO get mined into a block by somebody then they are displayed.```
+**If I recall correctly,** ```if they DO get mined into a block by somebody then they are displayed.```
 
-```If I recall correctly, the RPC importprivkey should be the only place where the normal memory allocator is used (the keys exist as ordinary hex strings in memory before they are processed by the importprivkey code).```
+**If I recall correctly,** ```the RPC importprivkey should be the only place where the normal memory allocator is used (the keys exist as ordinary hex strings in memory before they are processed by the importprivkey code).```
 
-```If I recall correctly, it does log the time at startup; for this particular test, I'm mostly interested in how long the upgrade process takes, so the old version not supporting timestamps isn't a problem.```
+**If I recall correctly,** ```it does log the time at startup; for this particular test, I'm mostly interested in how long the upgrade process takes, so the old version not supporting timestamps isn't a problem.```
 
-```If I recall correctly, one of the libraries it links with is incompatible with 10.5.```
+**If I recall correctly,** ```one of the libraries it links with is incompatible with 10.5.```
 
-```If I recall correctly, mybitcoin.com users got 49% of their coins back (I was one of the stupid people who trusted some bitcoins to them, by the way).```
+**If I recall correctly,** ```mybitcoin.com users got 49% of their coins back (I was one of the stupid people who trusted some bitcoins to them, by the way).```
 
-```If I recall correctly, the first testnet-in-a-box node should have all the coins.```
+**If I recall correctly,** ```the first testnet-in-a-box node should have all the coins.```
 
-```If I recall correctly, CO2 concentrations were pretty darn high when the dinosaurs where walking around.```
+**If I recall correctly,** ```CO2 concentrations were pretty darn high when the dinosaurs where walking around.```
 
-```If I recall correctly, the courts have ruled that "commercial speech" is not as protected-- so laws that restrict (for example) cigarette ads on television are OK.```
+**If I recall correctly,** ```the courts have ruled that "commercial speech" is not as protected-- so laws that restrict (for example) cigarette ads on television are OK.```
 
-```If I recall correctly, people were saying exactly the same thing about URLs 10 years ago (...google... yup).```
+**If I recall correctly,** ```people were saying exactly the same thing about URLs 10 years ago (...google... yup).```
 
-```If I recall correctly, getting around one-per-IP-address and CAPTCHA restrictions costs a scammer a few US pennies.```
+**If I recall correctly,** ```getting around one-per-IP-address and CAPTCHA restrictions costs a scammer a few US pennies.```
 
-```If I recall correctly, people were very creative about finding ways to get around it, but I don't have any references handy.```
+**If I recall correctly,** ```people were very creative about finding ways to get around it, but I don't have any references handy.```
 
-```If I recall correctly (and I probably don't), the percentage of nodes currently on the network that are accepting incoming connections and the -maxconnections limit isn't great enough to support every node trying to make 25 outbound connections.```
+**If I recall correctly** ```(and I probably don't), the percentage of nodes currently on the network that are accepting incoming connections and the -maxconnections limit isn't great enough to support every node trying to make 25 outbound connections.```
 
-```If I recall correctly, after he was done he found that it wouldn't compile on Windows any more.```
+**If I recall correctly,** ```after he was done he found that it wouldn't compile on Windows any more.```
 
-```If I recall correctly, there is a very small chance if you lose power or bitcoin crashes a key from the keypool could be used twice.```
+**If I recall correctly,** ```there is a very small chance if you lose power or bitcoin crashes a key from the keypool could be used twice.```
 
 ## It Doesn't look to me like
 
 ### Satoshi wrote:
-```It doesn't look to me like Crypto++ could be deciding whether to use SSE2 at runtime.```
+**It doesn't look to me like** ```Crypto++ could be deciding whether to use SSE2 at runtime.```
 
 ### Gavin wrote:
-```For low-priority transactions, it doesn't look to me like many miners are accepting lower fees.```
+```For low-priority transactions,``` **it doesn't look to me like** ```many miners are accepting lower fees.```
 
 ## is a tiny little
 
 ### Satoshi wrote:
-```mingwm10.dll is a tiny little DLL that came with the MinGW compiler that you need when you build for multi-thread.```
+```mingwm10.dll``` **is a tiny little** ```DLL that came with the MinGW compiler that you need when you build for multi-thread.```
 
 ### Gavin wrote:
-```If it is a tiny little niche thing then it is much easier for politicians or banks to smother it, paint it as "criminal money", etc. ```
+```If it``` **is a tiny little** ```niche thing then it is much easier for politicians or banks to smother it, paint it as "criminal money", etc. ```
 
 ## that in 20 years
 **I like this one. Keep in mind that when multiple patterns like these are combined they can be used by doxer to make authorship attribution. There are lots and lots of boring overlaps in addition to these idiosyncratic ones.**
 
 ### Satoshi wrote:
-```I'm sure that in 20 years there will either be very large transaction volume or no volume.```
+```I'm sure``` **that in 20 years** ```there will either be very large transaction volume or no volume.```
 
 ### Gavin wrote:
-```I think it is very unlikely that in 20 years we will need to support more Bitcoin transactions than all of the cash, credit card and international wire transactions that happen in the world today (and that is the scale of transactions that a pretty-good year-2035 home computer and network connection should be able to support).```
+```I think it is very unlikely``` **that in 20 years** ```we will need to support more Bitcoin transactions than all of the cash, credit card and international wire transactions that happen in the world today (and that is the scale of transactions that a pretty-good year-2035 home computer and network connection should be able to support).```
 
-```I can imagine that in 20 years the US still has the world's biggest army but some other nation has the world's largest economy.```
+```I can imagine``` **that in 20 years** ```the US still has the world's biggest army but some other nation has the world's largest economy.```
 
 
 # The origins of Gavin/Satoshi use of "back-of-the-envelope"
@@ -758,13 +758,81 @@ https://gavinthink.blogspot.com/2008/11/fall-town-meeting.html
 
 ### Satoshi uses the phrase before the date he was said to have met Gavin
 
-```My``` **back-of-the-envelope** ```projection: 42032 blocks/2016 = 20.85 = 85% of the way.  About 1.5 days to go until the next one.  That'll only be about 10 days since the last one, the target is 14 days, so 14/10 = 1.4 = around 40% difficulty increase.```
+**My back-of-the-envelope** ```projection: 42032 blocks/2016 = 20.85 = 85% of the way.  About 1.5 days to go until the next one.  That'll only be about 10 days since the last one, the target is 14 days, so 14/10 = 1.4 = around 40% difficulty increase.```
 
 https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=460
 
 ## June 12, 2010
 
 Satoshi and Gavin supposedly make contact for the first time (This means that they both used this phrase before coming into contact). 
+
+## July 17, 2010, Satoshi Nakamoto
+
+```If one has a slight head start, it'll geometrically spread through the network faster and get most of the nodes.``` **A rough back-of-the-envelope** ```example:```
+
+https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=300
+
+# November 09, 2010
+
+Back-of-the-envelope:Lets say computers in a few years can do a quadrillion hashes per second-- that's about 2^50 hashes/second.
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1960
+
+# February 02, 2011
+
+Let me see if I can do a back-of-the-envelope:
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1740
+
+## February 10, 2011
+
+If nobody beats me to it, I'll try to do a back-of-the-envelope calculation later today.
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1720
+
+## February 10, 2011
+
+Here's the back-of-the-envelope calculation I used to get to that number:Transaction size:  ~300 bytes
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1700
+
+## February 11, 2011
+
+There ARE hidden costs; the reason I want to do the back-of-the-envelope is to figure out how big those hidden costs are now and how big they're likely to get in the future.
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1700
+
+## March 14, 2011
+
+1. OP_CHECKSIG drives network-wide costs (see the thread on network-wide transaction cost back-of-the-envelope calculations).
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1540
+
+## March 07, 2013
+
+I did send them a pointer to this very rough back-of-the-envelope estimate on the current marginal cost of transactions:  https://gist.github.com/gavinandresen/5044482(if anybody wants to do a better analysis, I'd love to read it).
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=280
+
+## March 10, 2013
+
+Ok, fine, so do a back-of-the-envelope for what THAT cost is.
+
+Rough, back-of-the-envelope: how much does it cost to keep a dust-like transaction output in the unspent outputs set for 20 years?
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=260
+
+## April 28, 2013
+
+My back-of-the-envelope calculations say that anybody willing to spend a few hundred dollars a year on a dedicated server with a high-bandwidth connection can support a MUCH, MUCH larger block size.The block size will be raised. Your video will just make a lot of people worried about nothing, in exactly the same way Luke-Jr's BIP17 proposal last year (and his hyperbolic rhetoric about BIP16) did nothing but cause a tempest in a teapot.
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=200
+
+## October 6, 2014
+
+Please don't be lazy, at least do some back-of-the-envelope calculations to justify your numbers (to save you some work: the average Bitcoin transaction is about 250 bytes big).
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=60
 
 ## July 31, 2020
 
