@@ -746,7 +746,7 @@ And here is a quote from ```Power to save the world```:
 
 ```Rip gathered a few Seabed veterans, including Leo Gómez, and they pored over the Westinghouse data, did a``` **back-of-the-envelope** ```performance assessment, and after a couple of hours they concluded that, if the data was accurate, WIPP was going to fail because of a brine pocket in the salt bed caused by a one-liter-per-day leak. The group wrote a paper saying that, based on the information at hand, the repository would fill with water in a few years and the salt bed would eventually wash away. Gómez noted that the projected release of radionuclides would have been "enough to cook a cow."```
 
-## November 18, 2008
+## November 18, 2008 (Gavin)
 
 ### Gavin uses the phrase back-of-the-envelope himself
 
@@ -754,7 +754,7 @@ And here is a quote from ```Power to save the world```:
 
 https://gavinthink.blogspot.com/2008/11/fall-town-meeting.html
 
-##  February 23, 2010
+##  February 23, 2010 (Satoshi)
 
 ### Satoshi uses the phrase before the date he was said to have met Gavin
 
@@ -766,75 +766,75 @@ https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=460
 
 Satoshi and Gavin supposedly make contact for the first time (This means that they both used this phrase before coming into contact). 
 
-## July 17, 2010, Satoshi Nakamoto
+## July 17, 2010, (Satoshi)
 
 ```If one has a slight head start, it'll geometrically spread through the network faster and get most of the nodes.``` **A rough back-of-the-envelope** ```example:```
 
 https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=300
 
-# November 09, 2010
+## November 09, 2010 (Gavin)
 
-Back-of-the-envelope:Lets say computers in a few years can do a quadrillion hashes per second-- that's about 2^50 hashes/second.
+**Back-of-the-envelope:** ```Lets say computers in a few years can do a quadrillion hashes per second-- that's about 2^50 hashes/second.```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1960
 
-# February 02, 2011
+## February 02, 2011 (Gavin)
 
-Let me see if I can do a back-of-the-envelope:
+```Let me see if I can do a``` ***back-of-the-envelope:***
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1740
 
-## February 10, 2011
+## February 10, 2011 (Gavin)
 
-If nobody beats me to it, I'll try to do a back-of-the-envelope calculation later today.
+```If nobody beats me to it, I'll try to do a``` **back-of-the-envelope** ```calculation later today.```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1720
 
-## February 10, 2011
+## February 10, 2011 (Gavin)
 
-Here's the back-of-the-envelope calculation I used to get to that number:Transaction size:  ~300 bytes
-
-https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1700
-
-## February 11, 2011
-
-There ARE hidden costs; the reason I want to do the back-of-the-envelope is to figure out how big those hidden costs are now and how big they're likely to get in the future.
+```Here's the``` **back-of-the-envelope** ```calculation I used to get to that number:Transaction size:  ~300 bytes```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1700
 
-## March 14, 2011
+## February 11, 2011 (Gavin)
 
-1. OP_CHECKSIG drives network-wide costs (see the thread on network-wide transaction cost back-of-the-envelope calculations).
+```There ARE hidden costs; the reason I want to do the``` **back-of-the-envelope** ```is to figure out how big those hidden costs are now and how big they're likely to get in the future.```
+
+https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1700
+
+## March 14, 2011 (Gavin)
+
+```1. OP_CHECKSIG drives network-wide costs (see the thread on network-wide transaction cost``` **back-of-the-envelope** ```calculations).```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=1540
 
-## March 07, 2013
+## March 07, 2013 (Gavin)
 
-I did send them a pointer to this very rough back-of-the-envelope estimate on the current marginal cost of transactions:  https://gist.github.com/gavinandresen/5044482(if anybody wants to do a better analysis, I'd love to read it).
+```I did send them a pointer to this very``` **rough back-of-the-envelope** ```estimate on the current marginal cost of transactions:  https://gist.github.com/gavinandresen/5044482(if anybody wants to do a better analysis, I'd love to read it).```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=280
 
-## March 10, 2013
+## March 10, 2013 (Gavin)
 
-Ok, fine, so do a back-of-the-envelope for what THAT cost is.
+```Ok, fine, so do a``` **back-of-the-envelope** ```for what THAT cost is.```
 
-Rough, back-of-the-envelope: how much does it cost to keep a dust-like transaction output in the unspent outputs set for 20 years?
+**Rough, back-of-the-envelope:** ```how much does it cost to keep a dust-like transaction output in the unspent outputs set for 20 years?```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=260
 
-## April 28, 2013
+## April 28, 2013 (Gavin)
 
-My back-of-the-envelope calculations say that anybody willing to spend a few hundred dollars a year on a dedicated server with a high-bandwidth connection can support a MUCH, MUCH larger block size.The block size will be raised. Your video will just make a lot of people worried about nothing, in exactly the same way Luke-Jr's BIP17 proposal last year (and his hyperbolic rhetoric about BIP16) did nothing but cause a tempest in a teapot.
+**My back-of-the-envelope** ```calculations say that anybody willing to spend a few hundred dollars a year on a dedicated server with a high-bandwidth connection can support a MUCH, MUCH larger block size.The block size will be raised. Your video will just make a lot of people worried about nothing, in exactly the same way Luke-Jr's BIP17 proposal last year (and his hyperbolic rhetoric about BIP16) did nothing but cause a tempest in a teapot.```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=200
 
-## October 6, 2014
+## October 6, 2014 (Gavin)
 
-Please don't be lazy, at least do some back-of-the-envelope calculations to justify your numbers (to save you some work: the average Bitcoin transaction is about 250 bytes big).
+```Please don't be lazy, at least do some``` **back-of-the-envelope** ```calculations to justify your numbers (to save you some work: the average Bitcoin transaction is about 250 bytes big).```
 
 https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=60
 
-## July 31, 2020
+## July 31, 2020 (Gavin)
 
 ### Gavin still uses this phrase back-of-the-envelope even in 2020
 
