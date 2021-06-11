@@ -726,3 +726,51 @@ I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesi
 ```I think it is very unlikely that in 20 years we will need to support more Bitcoin transactions than all of the cash, credit card and international wire transactions that happen in the world today (and that is the scale of transactions that a pretty-good year-2035 home computer and network connection should be able to support).```
 
 ```I can imagine that in 20 years the US still has the world's biggest army but some other nation has the world's largest economy.```
+
+
+# The origins of Gavin/Satoshi use of "back-of-the-envelope"
+
+## May 23, 2008
+
+### Gavin reads 'Power to save the world' by Gwyneth Cravens
+
+```I've just finished reading "Power to Save the World," which is all about why using uranium to generate power is a really good idea.```
+
+https://gavinthink.blogspot.com/2008/05/radiation-monster.html
+
+Here is that very book:
+
+https://www.amazon.com/Power-Save-World-Nuclear-Energy/dp/0307385876
+
+And here is a quote from ```Power to save the world```:
+
+```Rip gathered a few Seabed veterans, including Leo Gómez, and they pored over the Westinghouse data, did a``` **back-of-the-envelope** ```performance assessment, and after a couple of hours they concluded that, if the data was accurate, WIPP was going to fail because of a brine pocket in the salt bed caused by a one-liter-per-day leak. The group wrote a paper saying that, based on the information at hand, the repository would fill with water in a few years and the salt bed would eventually wash away. Gómez noted that the projected release of radionuclides would have been "enough to cook a cow."```
+
+## November 18, 2008
+
+### Gavin uses the phrase back-of-the-envelope himself
+
+```So I did a``` **back-of-the-envelope** ```calculation to see how much sprawl it might cause, worst case. Take the 10,000 or so households in Amherst, count each as a "dwelling unit", multiple by 1,000 square feet, and you get: about 230 acres. Which is just a little over 1% of the total acreage in Amherst.```
+
+https://gavinthink.blogspot.com/2008/11/fall-town-meeting.html
+
+##  February 23, 2010
+
+### Satoshi uses the phrase before the date he was said to have met Gavin
+
+```My``` **back-of-the-envelope** ```projection: 42032 blocks/2016 = 20.85 = 85% of the way.  About 1.5 days to go until the next one.  That'll only be about 10 days since the last one, the target is 14 days, so 14/10 = 1.4 = around 40% difficulty increase.```
+
+https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=460
+
+## June 12, 2010
+
+Satoshi and Gavin supposedly make contact for the first time (This means that they both used this phrase before coming into contact). 
+
+## July 31, 2020
+
+### Gavin still uses this phrase back-of-the-envelope even in 2020
+
+```But maybe they're not insane; maybe the exercise and mental health benefits outweigh the risk. A few days ago I stumbled across some tools that let me do a rough``` **back-of-the-envelope** ```on the size of the risks, and I think we should encourage a lot more physically-distanced outdoor dancing (and singing and yoga and drumming and whatever else makes people happy).```
+
+https://gavinthink.blogspot.com/2020/07/dancing-outside.html
+
