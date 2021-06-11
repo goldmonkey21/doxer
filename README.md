@@ -649,7 +649,8 @@ I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesi
 
 ### Satoshi wrote:
 ```If you don't believe me or don't get it, I don't have time to try to convince you, sorry.```
-(This was written to Larimer who is under the name bytemaster, also available in the folder above). 
+
+**(This was written to Larimer who is under the name bytemaster [ID = 611], also available in the folder above).**
 
 ### Gavin wrote:
 ```I am also sorry I didn't speak up about some of the things that were said about you earlier in this thread (e.g. suggesting an attack on your pool is NOT cool) but I don't have time to read every forum post as soon as it is posted...```
