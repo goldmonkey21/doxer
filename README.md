@@ -609,5 +609,9 @@ And so on, I cut the list off here because you get the idea.
 
 ![Scree Plot of Gavin and Satoshi](scree-plot-gavin-satoshi-2.png)
 
+## Out of top contenders (Gavin,Hal,Lachesis) who has noticeable similarity to Satoshi? 
 
+I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesis **never** used this term in their forum posts! But didn't Hal invent proof of work? Yes he did and called it `proof of work (POW)` without using dashes to separate the words. He didn't use dashes even on the btc forum posts because it was his invention and didn't write it like that. Lachesis never uses the term `proof-of-work` in all of his forum posts. This is one of the many reasons why I settle on Gavin and Gavin alone as Satoshi. 
+
+![proo-of-work versus proof of work with Satoshi and Gavin](proof-of-work-gavin-satoshi.png)
 
