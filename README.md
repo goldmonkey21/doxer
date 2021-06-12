@@ -615,7 +615,7 @@ I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesi
 
 ![proo-of-work versus proof of work with Satoshi and Gavin](proof-of-work-gavin-satoshi.png)
 
-## Higher Priority Things
+## Higher Priority Things ⭐
 **This is a very unique phrase that should make people check twice**
 1. "higher priority things" is listed on google.com.au as About 14,300 results (0.35 seconds). This is in contrast to "back-of-the-envelope" which is at About 5,080,000 results (0.38 seconds). 
 2. Keep in mind that there are hundreds of unique terms that isolate Gavin as Satoshi, but "higher priority things" is a powerful indicator of authorship just by itself. 
