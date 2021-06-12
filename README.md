@@ -639,6 +639,16 @@ I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesi
 
 ```I think that is a good idea (I think people would find all sorts of interesting uses for it), but there are``` **higher priority things** ```on the development roadmap.```
 
+### Gavin uses phrase 'higher-priority things' in 2008
+
+```We're irrationally anchored to the things that we already have, and that makes it really hard to give them up even though there might be other,``` **higher-priority things** ```we could (and should!) invest in. I'll keep reading Predictably Irrational; I'm hoping Professor Ariely will give some strategies for overcoming our irrational tendencies.```
+
+https://gavinthink.blogspot.com/2008/02/pool-anchors.html
+
+He suggests that he got the idea from reading **Predictably Irrational**, but I found the term ```higher priority``` in a nother book Gavin read called **The Bottom Billion.** Again, Gavin was using 'higher-priority things' in Feb 2008 way before 'meeting' Satoshi. The same thing is observed with phrase 'back-of-the-envelope' with both using it before meeting. Satoshi used the phrase 'higher priority things' in May 18 2010, this is a month before Gavin and Satoshi met in June 12 2010!
+
+https://bitcointalk.org/index.php?action=profile;u=3;sa=showPosts;start=420
+
 ## A menace to the network
 
 ### Satoshi wrote:
