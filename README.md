@@ -1,7 +1,7 @@
 # Doxer Stylometric Data Mining Library 🕵️
 
 
-![Agatha Christie quote- very few of us are what we seem](agatha-christie-quote.png)
+![Agatha Christie quote- very few of us are what we seem](images/agatha-christie-quote.png)
 
 ## Quick-start 
 
@@ -66,7 +66,7 @@ Done!
 
 ## Introduction
 
-![Simple Stylometry in Terminal](general-doxer-useage.png)
+![Simple Stylometry in Terminal](images/general-doxer-useage.png)
 
 Let us start this research project with a quick word about Agatha Christie (as pictured in the quote above). I have always likened my work as a data miner to that of Christie's most famous character Miss Marple. Far from being a lone spinster, Miss Marple is able to outwit some of the most clever of criminals simply because she has read enough crime books to gain a somewhat sixth sense into their goings on. With that I will encourage you to take my argument seriously and to even install my software on your own computer. The Python library after all is self contained and needs not many extra imports. With that said, let's uncover the identity of Satoshi and maybe learn a few more lessons about data mining along the way. 
 
@@ -165,7 +165,7 @@ I will use a Forest model built over these features so as to reduce the list of 
 
 
 
-![Burrows' Delta distance measure explained](burrows_deltas.png)
+![Burrows' Delta distance measure explained](images/burrows_deltas.png)
 
 
 Source: 
@@ -185,17 +185,17 @@ I further ran the reduced datasets over the rstylo library in R to see if I woul
 
 Results of Doxer and RandomForest as to number of classifications as Satoshi: 
 
-![Results of Doxer and Random Forest](forest-and-doxer-results.png)
+![Results of Doxer and Random Forest](images/forest-and-doxer-results.png)
 
 
 Results of rstylo library clustering all the texts classified by Forest as Satoshi: 
 
-![All texts classified by RandomForest clustered using rstylo](rstylo-large.png)
+![All texts classified by RandomForest clustered using rstylo](images/rstylo-large.png)
 
 
 Results of rstylo library clustering only top texts above 4 Forest classifications: 
 
-![Top texts over 4 classifications from Forest clustered using rstylo](rstylo-small.png)
+![Top texts over 4 classifications from Forest clustered using rstylo](images/rstylo-small.png)
 
 
 And here is the rstylo R package: 
@@ -290,9 +290,9 @@ https://bitcointalk.org/index.php?action=profile;u=224;sa=showPosts;start=200
 
 And here are some screenshots of the phrase:
 
-![Gavin's use of term "rough" and "my" back-of-the-envelope](gavin-satoshi-doxer.png)
+![Gavin's use of term "rough" and "my" back-of-the-envelope](images/gavin-satoshi-doxer.png)
 
-![Gavin's use of "rough" and "my" back-of-the-envelope in wild next to Satoshi](gavin-satoshi-doxer2.png)
+![Gavin's use of "rough" and "my" back-of-the-envelope in wild next to Satoshi](images/gavin-satoshi-doxer2.png)
 
 ## Consensus
 
@@ -302,7 +302,7 @@ And by way of my own rather rough form of back-of-the-envelope analysis, I could
 Moving right along to the q-source gospel, I must say that I was deeply disappointed with my findings because it disproved a theory of mine that James the Just wrote the q-source. I had to face up to the facts when both the Forest and Doxer nearly completely ignored the James texts and instead, nearly in every single model, classified the Gospel of Thomas as the same author as the long lost q-source gospel. The finding was extremely robust and I had no choice but to accept the findings and drop James for probably ever more. In a rather interesting way, both testaments have a theoretical background in Greek philosophy. The possible Hellenistic origins of the old testament and the gnostic (i.e. middle Platonism) of Thomas are a clear indication that there is a Greek context to both old and new testaments. I chuckle to myself thinking about  my fundamentalist upbringing where Christmas, Easter, and Birthdays were all banned simply because they had origins in Greek and Roman festivities. To be quite frank, I cannot understand it for the life of me as to why anyone would hold such contempt for Greek culture and philosophy. If you were to ask me I think it is our birth right in the west to know of where our culture comes from and where we may be going as a result. Well I hope Doxer has solved all of these mysteries once and for all, but I'm quite sure a lot more work will need to be done on the matter. 
 
 
-![Satoshi, Q-Source, and Septuagint](doxer-results.jpg)
+![Satoshi, Q-Source, and Septuagint](images/doxer-results.jpg)
 
 
 Here are some interesting books that you can read on the matter while maybe also by chance running Doxer on the side:
@@ -353,41 +353,41 @@ And on an extra note about the double space pattern associated with Adam Back. M
 
 ### back-of-the-envelope and double-spacing!
 
-![Gavin, Satoshi, back-of-the-envelope, double-spacing](back-of-the-envelope-gavin-satoshi.jpg)
+![Gavin, Satoshi, back-of-the-envelope, double-spacing](images/back-of-the-envelope-gavin-satoshi.jpg)
 
 
 
 ### non-obvious example of Satoshi
 Other Bitcoin developers use this word, but in the reduced list, Gavin only uses it. 
 
-![non-obvious example of Satoshi and Gavin](non-obvious-satoshi.jpg)
+![non-obvious example of Satoshi and Gavin](images/non-obvious-satoshi.jpg)
 
 
 
 ### double-spacing pattern 
 
-![Double spacing, Satoshi, Gavin](double-spacing-satoshi-gavin.jpg)
+![Double spacing, Satoshi, Gavin](images/double-spacing-satoshi-gavin.jpg)
 
 
 
 ### Blackmore and Clara finding
 
 
-![Doxer finds Clara and Blackmore](clara-and-blackmore.jpg)
+![Doxer finds Clara and Blackmore](images/clara-and-blackmore.jpg)
 
 
 
 ### Dream Interpretation 
 
 
-![Joseph, Daniel, and Dream Interpretation](joseph-and-daniel.jpg)
+![Joseph, Daniel, and Dream Interpretation](images/joseph-and-daniel.jpg)
 
 
 
 ### PAN2014 Benchmark Results (not complete yet)
 
 
-![PAN2014 Benchmark Result](pan2014-benchmark.jpg)
+![PAN2014 Benchmark Result](images/pan2014-benchmark.jpg)
 
 
 # Working out
@@ -667,13 +667,13 @@ And so on, I cut the list off here because you get the idea.
 ## Scree Plot Analysis of Basic Nearest Neighbor 
 
 
-![Scree Plot of Gavin and Satoshi](scree-plot-gavin-satoshi-2.png)
+![Scree Plot of Gavin and Satoshi](images/scree-plot-gavin-satoshi-2.png)
 
 ## Out of top contenders (Gavin,Hal,Lachesis) who has noticeable similarity to Satoshi? 
 
 I just noticed that Gavin used the term `proof-of-work` and that Hal and Lachesis **never** used this term in their forum posts! But didn't Hal invent proof of work? Yes he did and called it `proof of work (POW)` without using dashes to separate the words. He didn't use dashes even on the btc forum posts because it was his invention and didn't write it like that. Lachesis never uses the term `proof-of-work` in all of his forum posts. This is one of the many reasons why I settle on Gavin and Gavin alone as Satoshi. 
 
-![proo-of-work versus proof of work with Satoshi and Gavin](proof-of-work-gavin-satoshi.png)
+![proo-of-work versus proof of work with Satoshi and Gavin](images/proof-of-work-gavin-satoshi.png)
 
 ## Higher Priority Things ⭐
 **This is a very unique phrase that should make people check twice**
