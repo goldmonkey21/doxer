@@ -62,6 +62,25 @@ Output for Daniel:
 Genesis
 ```
 
+Find anonymous novel ```Clara``` in benchmark:
+
+```
+cd novels_english
+doxer.py -t Anon-Clara1864
+```
+
+Output for Clara novel:
+
+```
+0.000670058804150311 -> Blackmore-Lorna1869_english.txt
+0.0007114990852890783 -> Blackmore-Erema1877_english.txt
+0.0007436772047638017 -> Cbronte-Jane1847_english.txt
+0.0007649839175935351 -> Cbronte-Villette1853_english.txt
+Blackmore-Lorna1869
+```
+
+And that is the correct answer... Blackmore wrote the novels Clara and Lorna!
+
 Done!
 
 ## Introduction
