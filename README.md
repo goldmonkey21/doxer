@@ -31,6 +31,10 @@ Output for Satoshi:
 0.001015254105998512 -> 224GavinAndresen_forum.txt
 224GavinAndresen
 ```
+
+👍 Australian born programmer Gavin Andresen is Satoshi!
+
+
 Find author of original Q-source gospel:
 
 ```
@@ -47,6 +51,9 @@ Output for Q-source:
 thomas-layton
 ```
 
+👍 Gospel of Thomas and original Christian Gospel were written by a Gnostic!
+
+
 Find author of Daniel (old testament text):
 
 ```
@@ -61,6 +68,9 @@ Output for Daniel:
 0.001307254569569858 -> Genesis_lxx.txt
 Genesis
 ```
+
+👍 Both books of Daniel and Genesis written by same person, pushing date of entire old testament to Hellenistic era!
+
 
 Find anonymous novel ```Clara``` in benchmark:
 
@@ -79,7 +89,7 @@ Output for Clara novel:
 Blackmore-Lorna1869
 ```
 
-And that is the correct answer... Blackmore wrote the novels Clara and Lorna!
+👍 And that is the correct answer... Blackmore wrote the novels Clara and Lorna!
 
 Done!
 
