@@ -10,25 +10,16 @@
 ░░████████░░██████  █████ █████░░██████  █████    
  ░░░░░░░░  ░░░░░░  ░░░░░ ░░░░░  ░░░░░░  ░░░░░     
                                                   
-Doxer Stylometric Data Mining Library v1.3
+Doxer Stylometric Data Mining Library v1.5
 By Troy J. Watson
 
 Example:
 
 Basic 1-gram word search for Satoshi 
-doxer.py -t 3satoshi
+doxer.py -t 3satoshi -r 10 
 
 Find the author for Satoshi with 4 ngrams using characters
-doxer.py -n 4 -c -t 3satoshi
-
-Reduce massive dataset with forest then classify: 
-doxer.py -t 3satoshi -f 
-
-Do the same again only with character n-grams with forest:
-doxer.py -t 3satoshi -f -c
-
-Reset pickle of table and run a fresh forest:
-doxer-py -t 3satoshi -f --reset
+doxer.py -n 4 -c -t 3satoshi -r 10 
 
 """
 import argparse
@@ -37,11 +28,6 @@ import sys
 import glob
 import math
 import random
-import pickle
-
-import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-
 
 class Doxer(object):
 	def __init__(self):
@@ -118,7 +104,7 @@ class Doxer(object):
 
 		return self.ngramDict(self.ngrams(t,NGRAM),CHAR)
 
-	def analyse(self, fs, CHAR=False, NGRAM=1,AUTHOR='Satoshi',OUTPUT=False):
+	def analyse(self, fs, CHAR=False, NGRAM=1,AUTHOR='Satoshi',OUTPUT=False,VERBOSE=False):
 		# Masterkey counts n documents have ngram pattern
 		masterkey = {}
 		# Finalkey stores ngram overlap between candidate,author,and other candidates
@@ -206,48 +192,41 @@ class Doxer(object):
 			tmp = []
 			for xx,yy in y[1].items():
 				tmp += [yy]
-			finallist += [[y[0] / (sum(tmp)/len(tmp)+0.00001),x]]
-			#finallist += [[y[0] / max(tmp),x]]
+			#finallist += [[y[0] / (sum(tmp)/len(tmp)+0.00001),x]]
+			if y[0] == 0:
+				continue
+			finallist += [[y[0] / (max(tmp)+0.00001),x]]
 		finallist = sorted(finallist,reverse=True)
-		#TODO prints final list for winner
-		#print(finalkey[finallist[0][1]])
-		#TODO lists final top 20 score
-		#for l in finallist[:20]:
-		#	print('{} , {}'.format(l[1],l[0]))
+		if VERBOSE:
+			for l in finallist[:20]:
+				print('{} , {}'.format(l[1],l[0]))
 		#{ ngram : [docs, [name1,name2]] } 
 		for x,y in masterkey.items():
 			if len(y) < 2 : continue
 			if sorted(y[1]) == sorted([finallist[0][1], AUTHOR]):
-				#TODO this is printing the words that overlap
 				if OUTPUT: print(x)
-		#TODO return basic result
 		return finallist[0][1]
 			
 	
 """
 Main section
-
-grep -l back-of-the-envelope * 
 """
 def main(args):
 	doxer = Doxer()
 
 	def preprocess(data,q,save=False):
-		'''
-		Note: the whole point of this preprocessing is to reduce a large folder size down to the most likely candidates using Burrows Delta (without the z-scores). This approach to reduction can be replaced with a more powerful method later on and will be essential to uncovering the identity of obscure texts. 
-		'''
 		if save: masterkey = {}
 		# Get ngram dict for Q document
-		qd = doxer.processText(q[0],args.charGram,args.ngram)
+		qd = doxer.processText(q[0],False,1)
 		# Store top ngrams in a list 
 		ql = []
 		# Create a list of all Q items with tally at front for sorting
 		for x,y in qd.items():
 			ql += [[y,x]]
-		# Sort the ngrams by largest first and cut off top 100 for quick reduction of dataset
-		ql = sorted(ql,reverse=True)[:1000]
+		# Sort the ngrams by largest first and cut off top 300 for quick reduction of dataset
+		ql = sorted(ql,reverse=True)[:300]
 
-		# Get the total N of grams in top 100
+		# Get the total N of grams in top 300
 		qn = sum([x[0] for x in ql])
 		# Get term frequency for each gram
 		qf = [[x[0]/(qn+0.00000001),x[1]] for x in ql]
@@ -263,7 +242,7 @@ def main(args):
 			if ''.join(f.split('_')[:-1]) == args.testText:
 				continue
 			# get word grams for each candidate in folder
-			d = doxer.processText(f,args.charGram,args.ngram)
+			d = doxer.processText(f,False,1)
 			# Just copy Q dict and zero out all entries to reuse it
 			dd = qd.copy()
 			for x,y in dd.items():
@@ -275,21 +254,51 @@ def main(args):
 			n = sum([x[1] for x in dd.items()])
 			# Calculate Burrows' Delta distance between Q doc and candidate doc
 			if save: masterkey[f] = dd
-			#FIXME qd.items() is probably bigger than dd{}
 			#TODO normalize the data otherwise the first items will disproportionately affect all of the weights
 			delta = sum([abs(x[1] - dd[x[0]]/(n+0.00000001)) for x in qd.items()]) / len(qd)
-			#TODO corpus += [ [x[1] for x in qd.items()] ] 
-
-		
 			
 			# Add the delta value and filename to corpus list to later pick the best results out closer to Q
 			corpus += [[delta,f]]
 		# Here is where we sort the delta list and cut off anything over our -r number requested
 		corpus = sorted(corpus,reverse=False)[:args.reduce]
+		def _reduce(ls):
+			c = 0 ; t = []
+			ls = [l[0] for l in ls]
+			for l in ls:
+				if c == 0: pass
+				else:
+					t += [ls[c] - ls[c-1]]
+				c += 1
+			return t
+
+		def _split(ls):
+			c = 0 ; m = []
+			def _mean(x):
+				return sum(x) / len(x)
+			for l in ls:
+				#if c == 0: pass
+				#else:
+				m += [[l, c+1]]
+				c += 1
+			#print(sorted(m))
+			tmp = 99
+			for ll in m:
+				if ll[0] < tmp:
+					tmp = ll[0]
+				else:
+					#NOTE its returning item with length too long
+					#NOTE but [:ll[1]] cuts it out in corpus
+					return ll[1]
+			return sorted(m,reverse=False)[0][1]
+
+		#TODO make split point with gini function
+		#print(_reduce(corpus))
+
+		corpus = corpus[:_split(_reduce(corpus))]
+
 		# Print out the results 
-		#TODO print out reduced list here
-		#for x in corpus:
-		#	print('{} -> {}'.format(x[0],x[1]))
+		for x in corpus:
+			print('{} -> {}'.format(x[0],x[1]))
 		# Add the Q filename to corpus list so that it can be analysed by Doxer
 		corpus = [x[1] for x in corpus] + q
 		if save: return corpus, masterkey
@@ -300,314 +309,48 @@ def main(args):
 		print('Skip Grams... {}'.format(doxer.testSkipGram()))
 		print('Word Grams... {}'.format(doxer.testWordGram()))
 	
-	elif args.forest:
-		##########################################
-		# STEP 1 : COLLECT FREQUENCIES 
-		##########################################
-		
-		def ngrams(l, n = 4):
-			c = 0
-			out = []
-			while True:
-				out += [l[c:c+n]]
-				c += 1
-				if c >= len(l) - n + 1:
-					break
-			return out
-
-		def ngramDict(l):
-			d = {}
-			for x in l:
-				xx = ''.join(x)
-				if xx in d:
-					d[xx] += 1
-				else:
-					d[xx] = 1
-			return d
-
-		def processText(txt,NGRAM=4,word=False):
-			t = open(txt).read().lower()
-			#NOTE use these if using words
-			if word: 
-				r = t.split(' ')
-				t = []
-				for rr in r:
-					t += [''.join(list([val for val in rr if val.isalpha()]))]
-			else:
-				#NOTE use this if using ngrams
-				t = ''.join(list([val for val in t if val.isalpha()]))
-			return ngramDict(ngrams(t,NGRAM))
-
-		if args.charGram:
-			WORD = False
-		else:
-			WORD = True
-
-
-		if args.gut:
-			KIN = False
-		else:
-			KIN = True
-
-		if WORD:
-			NGRAM = 1
-		else:
-			NGRAM = 4
-
-		if WORD: w = 'w'
-		else: w = 'c'
-
-		buff_title = 'table-' + str(w) + '.pickle'
-
-		buff = True	
-		try: 
-			zscore = pickle.load(open(buff_title,'rb'))
-		except:
-			buff = False	
-
-		if args.reset:
-			buff = False
-			
-		if WORD:
-			ff = open('/home/flak/Documents/prog/.git/doxer/1w-300a/masterkey.pickle','rb')
-		else:
-			ff = open('/home/flak/Documents/prog/.git/doxer/4g-1000a/masterkey.pickle','rb')
-		ll = pickle.load(ff)
-
-
-		if not(buff):
-			tags = [l[1] for l in ll]
-
-			d = {}
-			for l in ll:
-				d[l[1]] = 0
-
-			fs = glob.glob('*.txt')
-
-			d_sum = d.copy()
-			n_sum = 0
-
-			zscore = {}
-
-			for f in fs:
-				print(f.split('/')[-1])
-				dd = d.copy()
-
-				ngs = processText(f,NGRAM,WORD)
-				n = 0
-				for t in tags:
-					if t in ngs:
-						n += ngs[t]
-					else:
-						ngs[t] = 0
-
-				for t in tags:
-					try:
-						dd[t] = ngs[t] / n 
-						d_sum[t] += ngs[t] / n
-					except:
-						print('error divide by zero')
-						
-				out = [dd[t] for t in tags]
-				
-				title = f.split('/')[-1].split('.')[0]
-				zscore[title] = out	
-
-				n_sum += 1
-			with open(buff_title,'wb') as f:
-				pickle.dump(zscore, f)	
-
-
-		##########################################
-		# STEP 2 : CREATE PAIRWISE COMPARISONS 
-		##########################################
-		KEYWORD = args.testText
-		#NOTE create X for forest
-		X = []
-		yy = []
-
-		ll = []
-		for x,y in zscore.items():
-			ll += [x]
-		l = []
-		d = {}
-		cx = 0
-		cy = 0
-		true_c = 0
-		for x in ll:
-			cy = 0
-			for y in ll:
-				if x==y:
-					pass
-				elif x.split('_')[0] != KEYWORD and y.split('_')[0] != KEYWORD:
-					pass
-				else:
-					l = sorted([cx,cy])
-					if l[0] in d:
-						if l[1] in d[l[0]]:
-							cy += 1
-							continue
-						else:
-							d[l[0]] += [l[1]]
-					else:
-						d[l[0]] = [l[1]]
-					txt1 = zscore[ll[l[0]]]
-					txt2 = zscore[ll[l[1]]]
-					txts = list(zip(txt1,txt2))
-					delta = [abs(x[0] - x[1]) for x in txts]
-					yy += [[x,y]]
-					X += [delta]
-					true_c += 1
-				cy += 1
-			cx += 1
-		print(X[0])
-		print(yy[0])
-
-		##########################################
-		# STEP 3 : RUN DATA ON FOREST MODEL 
-		##########################################
-
-		if KIN:
-			knn = 'kin'
-		else:
-			knn = 'gut'
-
-		if WORD: 
-			nns = [100,200,300]
-			gms = '1w'
-		else:
-			nns = [100,200,300,400,500,600,700,800,900,1000]
-			gms = '4g'
-
-		def trans(l): return list(map(list, zip(*l)))
-		# Collect all reduced candidates here
-		r = []
-		print('Running over all Forest models')
-		print('--------------------------------------')
-		for code in nns:	
-			ss = gms + '-rs-' + knn + '-' + str(code) + 'a.pickle'
-			fn = '/home/flak/Documents/prog/.git/forest/'+ss	
-			if WORD and code == 300:
-				codes = 298
-			else:
-				codes = code
-			tmpX = trans(trans(X)[:codes])
-
-			loaded_model = pickle.load(open(fn,'rb'))
-			predictions = loaded_model.predict(tmpX)
-			keys = yy
-			c = 0
-			for p in predictions:
-				if int(p) > 0:
-					print(c,p,keys[c])
-					for k in keys[c]:
-						r += [k]
-				c+=1
-
-		##########################################
-		# STEP 4 : RUN DOXER ON REDUCED LIST 
-		##########################################
-
-		# Get list of files in folder to test against Q
-
-		ddd = {}
-		for rr in r:
-			if rr in ddd:
-				ddd[rr] += 1
-			else:
-				ddd[rr] = 1
-		r = sorted([[ddd[x],x]for x in set(r)], reverse=True)[:10]
-		print(r)
-		data = [x[1] + '.txt' for x in r]
-		print()
-		print('Reduced list of forest candidates:')	
-		print('--------------------------------------')
-		# Q document is the document in question
-		q = glob.glob(args.testText + '*.txt')
-
-		if args.forestOnly:
-			sys.exit()
-
-		print()
-		print('Analyzing Word Grams 1 - 10')
-		print('--------------------------------------')
-		for y in range(1,10):
-			fk = doxer.analyse(fs=data,CHAR=False,NGRAM=y,AUTHOR=args.testText, OUTPUT=args.output)
-			print(y,fk)
-
-		print()
-		print('Analyzing Char Grams 4 - 10')
-		print('--------------------------------------')
-		for y in range(4,10):
-			fk = doxer.analyse(fs=data,CHAR=True,NGRAM=y,AUTHOR=args.testText, OUTPUT=args.output)
-			print(y,fk)
-
-
-	elif args.pan:
-
-		#q = ['GR009unknown_greek.txt']
-		#data = ['GR009known_greek.txt','GR012unknown_greek.txt']
-		#TODO loop over this with multiple conditions
-		fs = glob.glob('*.txt')
-		score = 0
-		tt = 0
-		for f in fs:
-			if f.split('-')[-1].split('_')[0] == 'known': continue
-			k = f.split('-')[0]
-			o = glob.glob(k + '-known_*')
-			c = 1
-			fo = [ff for ff in fs if ff != f and ff != o[0]]
-			vote = []
-			for x in range(10):
-				random.seed(c)
-				oo = o + []
-				oo += [random.sample(fo, 10)[0]]
-				#corpus = preprocess(o,[f])
-				oo += [f]
-				fk = doxer.analyse(fs=oo,CHAR=args.charGram,NGRAM=args.ngram,AUTHOR=f.split('_')[0])
-				vote += [fk.split('-')[0] == f.split('-')[0]]
-				c += 1
-			if sum(vote) > 5:
-				cl = True
-			else:
-				cl = False
-			act = f.split('_')[-1].split('.')[0] == 'True'  
-			print(cl,act)
-			if cl == act:
-				score += 1
-			tt += 1
-		print(score,tt,score/tt)
-
 	elif args.benchmark:
-		# English : 0.83
-		# Russian : 0.8518518518518519 
-		# Polish : 0.85
+		# English novels : 80%
+		# Russian novels: : 85.18%
+		# Polish novels : 77%
 
-		#TODO 1) get top 1000 word grams over folder
-		#TODO 2) loop over texts
-		#TODO 3) get 10 knn for doxer
 		fs = glob.glob('*.txt')
-		#_,masterkey = preprocess(fs[1:],[fs[0]],save=True)
-		count = 0; total = 0
+		count = 0; total = 0 ; f_count = 0
 		for f in fs:	
-			#q = masterkey[f]
-			#dd = {}
-			#for a,b in masterkey.items():
-			#	if a == f: continue
-			#	n = sum([x[1] for x in b.items()])
-			#	delta = sum([abs(x[1] - b[x[0]]/(n+0.00000001)) for x in q.items()]) / len(q)
-			#	dd[a] = delta
-			#ls = sorted([[x[1],x[0]] for x in dd.items()], reverse=False)[:args.reduce]
-			#corpus = [x[1] for x in ls]
 			fs2 = [ff for ff in fs if ff != f]
 			corpus = preprocess(fs2,[f])
-			fk = doxer.analyse(fs=corpus,CHAR=args.charGram,NGRAM=args.ngram,AUTHOR=f.split('_')[0])
+			if len(corpus) > 2:
+				def _count(ls):
+					d = {}
+					for l in ls:
+						if l in d:
+							d[l] += 1
+						else:
+							d[l] = 1
+					out = []
+					for k,v in d.items():
+						if v > 1:
+							out += [k]
+					return out
+				txts = _count([x.split('-')[0] for x in corpus])
+				if len(txts) == 1:
+					fk = txts[0] + '-text'
+				else:
+					fk = doxer.analyse(fs=corpus,CHAR=args.charGram,NGRAM=args.ngram,AUTHOR=f.split('_')[0],VERBOSE=args.verbose)
+			else:
+				fk = [x for x in corpus if x != f][0]
 			A = f.split('-')[0]
 			B = fk.split('-')[0]
+			print(A)
+			if A == 'Anon':
+				A = 'Blackmore'
 			print( A == B)
 			if A==B: 
 				count += 1
+			else:
+				f_count += 1
 			total += 1
+			print(f_count / total) 
 		print(count,total,count/total)
 	else:
 		# Get list of files in folder to test against Q
@@ -617,7 +360,10 @@ def main(args):
 		# Reduce the large folder down to a manageable list
 		corpus = preprocess(data,q)
 		# Run Doxer!
-		fk = doxer.analyse(fs=corpus,CHAR=args.charGram,NGRAM=args.ngram,AUTHOR=args.testText, OUTPUT=args.output)
+		if len(corpus) > 2:
+			fk = doxer.analyse(fs=corpus,CHAR=args.charGram,NGRAM=args.ngram,AUTHOR=args.testText, OUTPUT=args.output,VERBOSE=args.verbose)
+		else:
+			fk = corpus
 		print(fk)
 		
 if __name__ == '__main__':	   
@@ -632,13 +378,8 @@ if __name__ == '__main__':
 	parser.add_argument('-t',help='Test author (default: Satoshi)',type=str,default='Satoshi',dest='testText')
 	parser.add_argument('-u',help='Run UnitTest on functions',dest='unitTest',action='store_true')
 	parser.add_argument('-b',help='Benchmark folder of texts',dest='benchmark',action='store_true')
-	#TODO add v for verbose
-	parser.add_argument('-p',help='Pan 2014 Benchmark over folder',dest='pan',action='store_true')
+	parser.add_argument('-v',help='Verbose output to analyse all of the steps',dest='verbose',action='store_true')
 	parser.add_argument('-o',help='Output exclusive ngrams used by author and classified candidate',dest='output',action='store_true')
-	parser.add_argument('-g',help='Use Gutenberg models for forest',dest='gut',action='store_true')
-	parser.add_argument('-f',help='Run forest model',dest='forest',action='store_true')
-	parser.add_argument('-ff',help='Only run forest model and quit before running doxer',dest='forestOnly',action='store_true')
-	parser.add_argument('--reset',help='Reset pickle of tables',dest='reset',action='store_true')
 
 	args = parser.parse_args()
 

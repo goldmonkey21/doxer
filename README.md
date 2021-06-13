@@ -3,6 +3,66 @@
 
 ![Agatha Christie quote- very few of us are what we seem](agatha-christie-quote.png)
 
+## Quick-start 
+
+Clone this repository: 
+
+```git clone https://github.com/goldmonkey21/doxer```
+
+Add doxer to your ```.bashrc``` file: 
+
+```
+cd ~
+sudo vim .bashrc
+export PATH=$PATH:/home/flak/Documents/prog/.git/doxer
+```
+
+Find Satoshi identity in btc folder:
+
+```
+cd btcforum
+doxer.py -t 3satoshi
+```
+
+Output for Satoshi:
+
+```
+0.0010055437039908227 -> 237lachesis_forum.txt                      
+0.001015254105998512 -> 224GavinAndresen_forum.txt
+224GavinAndresen
+```
+Find author of original Q-source gospel:
+
+```
+cd christiantexts
+doxer.py -t qsource
+```
+
+Output for Q-source:
+
+```
+0.001427588237734938 -> matthew-web_christian.txt 
+0.0015145750641581285 -> luke-web_christian.txt
+0.0015699158741751618 -> thomas-layton_christian.txt
+thomas-layton
+```
+
+Find author of Daniel (old testament text):
+
+```
+cd lxx
+doxer.py -t Daniel
+```
+
+Output for Daniel:
+
+```
+0.0012709272493254052 -> KingsI_lxx.txt
+0.001307254569569858 -> Genesis_lxx.txt
+Genesis
+```
+
+Done!
 
 ## Introduction
 
@@ -218,7 +278,7 @@ So next time you see one of those most common word clusters like proof-of-work, 
 	224GavinAndresen_forum.txt
 	3satoshi_forum.txt
 	
-**That's right, out of 620 profiles from the BitcoinTalk Forum, only two people used these word combinations. That's 63.4 MB of text where only two profiles pop out as using this phrase. It just so happens that Stylometric analysis also isolates these two profiles as of haivng the same writing style. That's Stylometric analysis on function word use (i.e. frequency patterns of words like "the","but","then") and also unique word useage (i.e. Doxer).**
+**That's right, out of 620 profiles from the BitcoinTalk Forum, only two people used these word combinations. That's 63.4 MB of text where only two profiles pop out as using this phrase. It just so happens that Stylometric analysis also isolates these two profiles as of having the same writing style. That's Stylometric analysis on function word use (i.e. frequency patterns of words like "the","but","then") and also unique word usage (i.e. Doxer).**
 
 You can check out the use of this phrase in the wild on the BitcoinTalk forum:
 
