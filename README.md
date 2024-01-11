@@ -1,5 +1,3 @@
-# [Update 11-1-2024: New code created using Bloom Filters to enhance Stylometric Data Mining; See results here](https://github.com/goldmonkey21/bloomsatoshi)
-
 # Doxer Stylometric Data Mining Library 🕵️
 
 
